@@ -1,7 +1,8 @@
 
 type UserData = {
-    name: string;
-    email: string;
+    name?: string;
+    email?: string;
+    isLogged?: boolean;
 };
 
 type UserProps = {

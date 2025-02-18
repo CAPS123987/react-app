@@ -15,16 +15,25 @@ const ContextWrapper:React.FC<ContextNodeWrapper> = ({children}) => {
   const [user, setUser] = useState<UserData>({} as UserData);
 
   useEffect(() => {
-    const cookieUName = cookies.get('userName')?cookies.get('userName'):'login please';
-    const cookieUEmail = cookies.get('userEmail')?cookies.get('userEmail'):'login please';
+    const cookieUName = cookies.get('userName');
+    const cookieUEmail = cookies.get('userEmail');
 
-    const cookieUser : UserData = {
-      name: cookieUName,
-      email: cookieUEmail
+    let cookieUser : UserData;
+    if(!cookieUName || !cookieUEmail) {
+      cookieUser = {
+        isLogged: false
+      }
+    } else {
+      cookieUser = {
+        name: cookieUName,
+        email: cookieUEmail,
+        isLogged: true
+      }
     }
 
     setUser(cookieUser);
   }, []);
+  
 
   return (
       <div>
