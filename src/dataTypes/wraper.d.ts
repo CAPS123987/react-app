@@ -1,0 +1,3 @@
+type ContextNodeWrapper = {
+    children: ReactNode;
+};
