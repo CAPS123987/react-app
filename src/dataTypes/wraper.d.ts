@@ -1,3 +1,3 @@
-type ContextNodeWrapper = {
+type ChildProps = {
     children: ReactNode;
-};
+}
