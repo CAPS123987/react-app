@@ -17,9 +17,9 @@ const Navigation: React.FC = () => {
         <nav className="navigation">
             <Link to={'/'} className="navHomeLink"><h1>App :)</h1></Link>
             <Toggle className="profileToggle" text="Váš profil">
-                {globalContext.usersData.isLogged?
+                {globalContext.userData.isLogged?
                 <>
-                <UserInfo usersData={globalContext.usersData}/>
+                <UserInfo usersData={globalContext.userData}/>
                 <Link to={'/logout'}><span>Odhlásit se</span></Link>
                 </>
                 :

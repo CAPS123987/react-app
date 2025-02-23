@@ -2,13 +2,11 @@ import { createContext } from "react";
 import Cookies from "universal-cookie";
 
 type GlobalContextProps = {
-    usersData: UserData;
-    cookies: Cookies;
+    userData: UserData;
 }
 
 const GlobalContext = createContext<GlobalContextProps>({
-    usersData: {},
-    cookies: {} as Cookies,
+    userData: {},
 })
 
 export default GlobalContext;

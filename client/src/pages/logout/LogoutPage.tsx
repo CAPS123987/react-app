@@ -2,6 +2,7 @@ import { usePageTitle } from "../../hooks"
 import { useContext, useEffect } from "react";
 import GlobalContext from "../../context";
 import Loader from "../../UI/loader";
+import { userEndpoint } from "../../proxy/proxy";
 
 const LogoutPage : React.FC = () => {
     const globalContext = useContext(GlobalContext);
@@ -9,14 +10,10 @@ const LogoutPage : React.FC = () => {
     usePageTitle('Odhlášení');
 
     useEffect(() => {
-        globalContext.cookies.remove('userName');
-        globalContext.cookies.remove('userEmail');
-        globalContext.usersData = {
-            name: '',
-            email: '',
-            isLogged: false
-        }
-        window.location.href = '/';
+        userEndpoint.logoutUser<UserData>().then((user) => {
+            globalContext.userData = user;
+            window.location.href = '/';
+        });
     }, []);
 
 

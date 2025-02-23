@@ -10,7 +10,7 @@ const UserPage:React.FC = () => {
     return (
         <div>
             <span>This is User page app content</span>
-            <p>{globalContext.usersData.isLogged ? `Logged as: ${globalContext.usersData.name}` : 'Not logged in'}</p>
+            <p>{globalContext.userData.isLogged ? `Logged as: ${globalContext.userData.name}` : 'Not logged in'}</p>
         </div>
     );
 }

@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { Form } from "react-router-dom";
 import GlobalContext from "../../context";
 import { usePageTitle } from "../../hooks";
+import { userEndpoint } from "../../proxy/proxy";
 
 const LoginPage : React.FC = () => {
     const globalContext = useContext(GlobalContext);
@@ -14,16 +15,11 @@ const LoginPage : React.FC = () => {
     const login = (event : React.MouseEvent<HTMLInputElement, MouseEvent>) => {
         event.preventDefault();
 
-        globalContext.cookies.set('userName', userName, { path: '/' });
-        globalContext.cookies.set('userEmail', userEmail, { path: '/' });
+        userEndpoint.loginUser<UserData>(userName, userEmail).then((user) => {
+            globalContext.userData = user;
+            //window.location.href = '/';
+        });
 
-        globalContext.usersData = {
-            name: userName,
-            email: userEmail,
-            isLogged: true
-        }
-
-        window.location.href = '/';
     }
 
     return (
